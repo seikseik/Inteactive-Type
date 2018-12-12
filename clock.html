@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+
+
+	<script>
+
+let prova;
+
+
+    function preload() {
+      fontS = loadFont('font/NHaasGroteskDSPro-15UltTh.ttf');
+      fontM = loadFont('font/NHaasGroteskDSPro-45Lt.ttf');
+      fontH = loadFont('font/NHaasGroteskDSPro-55Rg.ttf');
+    }
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight*5);
+      background(0);
+      textAlign(CENTER);
+    }
+
+    let a = 255;
+    let b = 0;
+
+
+    function draw() {
+
+    fill(255);
+    textSize(80);
+    textFont(fontH);
+    text("H",60, 80);
+    textFont(fontM);
+    text("M", width/2, 80);
+    textFont(fontS);
+    text("S", width-80, 80);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+
+    translate(0,150);
+
+      var sy = map(second(), 0, 60, 0, height-200);
+      var my = map(minute() + norm(second(), 0, 60), 0, 60, 0, height-200);
+      var hy = map(hour() + norm(minute(), 0, 60), 0, 24, 0, height-200);
+
+      var h = hour();
+      var m = minute();
+      var s = second();
+
+
+      var size = 80;
+      noStroke();
+      fill(a);
+      textFont(fontM);
+      textSize(size+80);
+      text(h,100, hy);
+
+      textFont(fontM);
+      textSize(size+80);
+      fill(b);
+      stroke(a);
+      text(m, width/2, my);
+
+      textFont(fontS);
+      textSize(size);
+      fill(a);
+      text(s, width-80, sy);
+
+    if(s == 0){
+      background(0);
+    };
+
+    }
+
+
+
+
+	</script>
+
+
+	<style>
+		body {
+			background-color: black;
+			margin:0;
+			padding:0;
+			height: auto;
+			overflow-y: scroll;
+			cursor: crosshair;
+		}
+		canvas {
+			margin:auto;
+			height:auto;
+			overflow-y: scroll;
+		}
+
+	.testo{
+	font-size:30px;
+	color:white;
+	letter-spacing: 10px;
+	line-height: 10px;
+position:relative;
+		}
+
+
+		.testo2{
+		font-size:0px;
+		color:white;
+		letter-spacing: 10px;
+		line-height: 10px;
+margin-left:20px;	}
+
+
+	</style>
+
+</head>
+<body>
+
+</body>
+</html>

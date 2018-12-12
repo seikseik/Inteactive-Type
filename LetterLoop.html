@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+	<script src="libraries/p5.sound.js"></script>
+	<script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+
+	<script>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Interactive-posters</title>
+
+    	<script src="libraries/p5.js"></script>
+    	<script src="libraries/p5.dom.js"></script>
+    	<script src="libraries/p5.sound.js"></script>
+    	<script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+
+    	<script>
+
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+        	<meta charset="UTF-8">
+        	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        	<title>Interactive-posters</title>
+
+        	<script src="libraries/p5.js"></script>
+        	<script src="libraries/p5.dom.js"></script>
+        	<script src="libraries/p5.sound.js"></script>
+        	<script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+
+        	<script>
+
+
+            let j = 0;
+            let s = 0;
+            let font;
+            let font2;
+
+
+
+
+            function preload() {
+              font = loadFont('font/NHaasGroteskDSPro-15UltTh.ttf');
+            	font2 = loadFont('font/NHaasGroteskDSPro-55Rg.ttf');
+
+
+            }
+
+            function setup() {
+            	createCanvas(windowWidth, windowHeight);
+            	background(0);
+            	textAlign(CENTER, CENTER);
+            }
+
+
+
+						var x = 200;
+						var y = 200;
+
+
+            function draw() {
+
+							x = lerp(x, mouseX, 0.04);
+							y = lerp(y, mouseY, 0.04);
+
+            		var xx1 = map(x, 0, width, 0, 600);
+            		var xx2 = map(x, 0, width, 0, 300);
+
+            		let a = map(0,x,0,255);
+            		textFont(font);
+            	  background(0);
+            		fill(255);
+            		strokeWeight(1);
+            		textSize(200);
+
+            		translate(-windowWidth/3, -windowHeight/2);
+            		translate(x, 320);
+
+            		stroke(255);
+
+            		var x1 = xx1-100;
+            	  var y1 = 580;
+            	  var x2 = 0;
+            	  var y2 = mouseY;
+
+
+            		line(x1, y1, x2, y1);
+            		ellipse(x1, y1, 7, 7);
+            		ellipse(x2, y1, 7, 7);
+
+
+            		line(100, 280, y, 280);
+            		ellipse(100, 280, 7, 7);
+            		ellipse(y, 280, 7, 7);
+
+            	 	// noStroke();
+								stroke(0);
+
+            		for (let i = 100; i < y; i+=5){
+            	 		text("Q", i, 350);
+            	 };
+
+            	 for (let i = 0; i < xx1-100; i+=5){
+            	    text("S", i, 650);
+            	};
+
+
+            		textFont(font2);
+            		textSize(20);
+
+            		var d = int(dist(x1, y1, x2, y2));
+            		var d2 = int(dist(100, 270, y, 270));
+
+            		text(nfc(d, 1),0, 550);
+            		text(nfc(d2, 1),y, 250);
+
+
+
+            }
+
+
+
+
+
+        	</script>
+
+
+        	<style>
+        		body {
+        			background-color: black;
+        			margin:0;
+        			padding:0;
+        			height: auto;
+        			overflow-y: scroll;
+        			cursor: crosshair;
+        		}
+        		canvas {
+        			margin:auto;
+        			height:auto;
+        			overflow-y: scroll;
+        		}
+
+        	.testo{
+        	font-size:30px;
+        	color:white;
+        	letter-spacing: 10px;
+        	line-height: 10px;
+        position:relative;
+        		}
+
+
+        		.testo2{
+        		font-size:0px;
+        		color:white;
+        		letter-spacing: 10px;
+        		line-height: 10px;
+        margin-left:20px;	}
+
+
+        	</style>
+
+        </head>
+        <body>
+
+        </body>
+        </html>

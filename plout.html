@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+	<script src="libraries/p5.sound.js"></script>
+	<script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+
+	<script>
+
+
+
+    let canvas;
+    let parag;
+
+    function preload() {
+      fontS = loadFont('font/NHaasGroteskDSPro-25Th.ttf');
+      fontM = loadFont('font/NHaasGroteskDSPro-45Lt.ttf');
+      fontH = loadFont('font/NHaasGroteskDSPro-55Rg.ttf');
+    }
+
+
+
+    let arr = [];
+
+    function setup() {
+      canvas = createCanvas(windowWidth*2, windowHeight*5);
+      textFont(fontS);
+      background(0);
+      canvas.style("z-index", "-1");
+      canvas.position(10,10);
+
+      for( let i = 0; i < 50; i++){
+
+        parag = createP("arte e scienza")
+        parag.addClass("testo2");
+        parag.style("letter-spacing", +i+"px");
+        parag.style("font-size", +i+"px")
+        arr.push(parag);
+      }
+      // console.log(arr);
+    }
+
+
+    function draw() {
+    background(0);
+    let spac = map(mouseX, 0, windowWidth, 0, 100);
+    let spac1 = map(mouseX, 0, width, 0, 100);
+    let spac2 = map(mouseX, 0, width, 0, 30);
+    let spac3 = map(mouseX, 0, width, 0, 50);
+    let spac4 = map(mouseX, 0, width, 0, 90);
+
+
+    for( let j = 0; j < arr.length; j++){
+			// let jj = j+spac;
+			let jj = spac + sin(j);
+      arr[j].style("letter-spacing", +jj+"px");
+    }
+
+
+
+
+
+
+    }
+
+
+
+
+	</script>
+
+
+	<style>
+
+	@@font-face {
+	}
+
+	
+		body {
+			background-color: black;
+			margin:0;
+			padding:0;
+			height: auto;
+			overflow-y: scroll;
+			cursor: crosshair;
+		}
+		canvas {
+			margin:auto;
+			height:auto;
+			overflow-y: scroll;
+		}
+
+	.testo{
+	font-size:30px;
+	color:white;
+	letter-spacing: 10px;
+	line-height: 10px;
+position:relative;
+		}
+
+
+		.testo2{
+		font-size:0px;
+		color:white;
+		letter-spacing: 10px;
+		line-height: 10px;
+margin-left:20px;	}
+
+
+	</style>
+
+</head>
+<body>
+
+</body>
+</html>

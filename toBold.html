@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+	<script src="libraries/p5.sound.js"></script>
+	<script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+
+	<script>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Interactive-posters</title>
+
+    	<script src="libraries/p5.js"></script>
+    	<script src="libraries/p5.dom.js"></script>
+    	<script src="libraries/p5.sound.js"></script>
+    	<script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+
+    	<script>
+
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+        	<meta charset="UTF-8">
+        	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        	<title>Interactive-posters</title>
+
+        	<script src="libraries/p5.js"></script>
+        	<script src="libraries/p5.dom.js"></script>
+        	<script src="libraries/p5.sound.js"></script>
+        	<script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+
+        	<script>
+
+
+            var font,
+              fontsize = 20
+              var max_distance;
+
+              var testo = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+              let arr = testo.toUpperCase().split("");
+              console.log(arr);
+
+            function preload() {
+              font = loadFont('font/NHaasGroteskDSPro-25Th.ttf');
+              fontB = loadFont('font/NHaasGroteskDSPro-65Md.ttf');
+            }
+
+            function setup() {
+              createCanvas(windowWidth, windowHeight);
+              textFont(font);
+              textSize(fontsize);
+              textAlign(CENTER, CENTER);
+              max_distance = dist(0, 0, width, height);
+            }
+
+            function draw() {
+              background(0);
+
+              var gap = 52;
+              var margin = 20;
+              translate(margin * 2, margin * 2);
+
+              var i = 0;
+
+              for (y = 0; y < height - gap; y += gap) {
+                for (x = 0; x < width - gap; x += gap) {
+
+                  var letter = arr[i];
+
+                  var size = dist(mouseX, mouseY, x, y);
+                        size = size/max_distance * 50;
+
+                fill(255);
+
+                textSize(50);
+
+
+
+
+
+                // if(size < 5){
+                //   textFont(fontB);
+                // }else{
+                //   textFont(font);
+                // }
+
+                text(letter, x, y);
+
+
+                  i++;
+                }
+              }
+            }
+
+
+
+
+
+        	</script>
+
+
+        	<style>
+        		body {
+        			background-color: black;
+        			margin:0;
+        			padding:0;
+        			height: auto;
+        			overflow-y: scroll;
+        			cursor: crosshair;
+        		}
+        		canvas {
+        			margin:auto;
+        			height:auto;
+        			overflow-y: scroll;
+        		}
+
+        	.testo{
+        	font-size:30px;
+        	color:white;
+        	letter-spacing: 10px;
+        	line-height: 10px;
+        position:relative;
+        		}
+
+
+        		.testo2{
+        		font-size:0px;
+        		color:white;
+        		letter-spacing: 10px;
+        		line-height: 10px;
+        margin-left:20px;	}
+
+
+        	</style>
+
+        </head>
+        <body>
+
+        </body>
+        </html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+
+	<script>
+
+    var font;
+    var vehicles = [];
+
+    function preload() {
+      font = loadFont('font/NHaasGroteskDSPro-25Th.ttf');
+    }
+
+    var points
+
+    function setup(){
+      createCanvas(windowWidth+900,windowHeight, WEBGL);
+      background(0);
+      noStroke();
+      points = font.textToPoints("DARKNESS",-1100,0,400,{
+        // sampleFactor: 1,
+        // simplifyThreshold: 0
+      });
+
+    }
+
+
+
+    function draw(){
+      var dirX = (mouseX / width - 0.5) * 2;
+      var dirY = (mouseY / height - 0.5) * 2;
+      directionalLight(250, 250, 250, -dirX, -dirY, 0.25);
+      ambientMaterial(250);
+
+      for(let i = 0; i < points.length; i++){
+        var pt = points[i];
+        push()
+        translate(pt.x, pt.y)
+        sphere(4)
+        pop();
+      }
+
+    }
+
+
+
+
+
+	</script>
+
+
+	<style>
+		body {
+			background-color: black;
+			margin:0;
+			padding:0;
+			height: auto;
+			overflow-y: scroll;
+			cursor: crosshair;
+		}
+		canvas {
+			margin:auto;
+			height:auto;
+			overflow-y: scroll;
+		}
+
+	.testo{
+	font-size:30px;
+	color:white;
+	letter-spacing: 10px;
+	line-height: 10px;
+position:relative;
+		}
+
+
+		.testo2{
+		font-size:0px;
+		color:white;
+		letter-spacing: 10px;
+		line-height: 10px;
+margin-left:20px;	}
+
+
+	</style>
+
+</head>
+<body>
+
+</body>
+</html>

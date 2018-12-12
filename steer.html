@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+
+	<script>
+
+
+    var font;
+    var vehicles = [];
+
+    function preload() {
+      font = loadFont('font/NHaasGroteskDSPro-75Bd.ttf');
+    }
+
+    function setup(){
+      createCanvas(windowWidth,windowHeight);
+      background(0);
+      textSize(300);
+
+	      var points = font.textToPoints("FORMA",0,250,0,400,{
+	        sampleFactor: 3,
+	        simplifyThreshold: 1
+	      });
+      for(let i = 0; i < points.length; i++){
+        var pt = points[i];
+        var vehicle= new Vehicle(pt.x, pt.y);
+        vehicles.push(vehicle);
+      }
+    }
+
+    function draw(){
+
+      fill(0, 80);
+      rect(0,0,width,height);
+
+        for(let i = 0; i < vehicles.length; i++){
+          var v = vehicles[i];
+          v.behaviors();
+          v.update();
+          v.show();
+        }
+    }
+
+    function Vehicle(x,y){
+      this.pos = createVector(x,y);
+      this.target = createVector(x,y);
+      this.vel = p5.Vector.random2D();
+      this.acc = createVector();
+      this.r = 10;
+      this.maxspeed= 10;
+      this.maxforce= 2;
+      }
+
+      function Ellipse(x,y,rag){
+        this.x = x;
+        this.y = y;
+        this.rag = rag;
+        }
+
+      Vehicle.prototype.behaviors = function(){
+      var arrive = this.arrive(this.target);
+      var mouse = createVector(mouseX,mouseY);
+      var flee = this.flee(mouse);
+
+      arrive.mult(1);
+      flee.mult(1);
+
+      this.applyForce(arrive);
+      this.applyForce(flee);
+      }
+
+      Vehicle.prototype.applyForce = function(f){
+      this.acc.add(f);
+      }
+
+    Vehicle.prototype.update = function(){
+      this.pos.add(this.vel);
+      this.vel.add(this.acc);
+      this.acc.mult(0);
+    }
+
+
+    Vehicle.prototype.show = function(){
+
+      let dist1 = dist(this.pos.x, this.pos.y, mouseX, mouseY);
+      let col = map(dist1,0, 800, 0, 255);
+      let w = map(dist1,0, 1000, 0, 0.5);
+      stroke(col);
+      strokeWeight(w);
+      line(this.pos.x, this.pos.y, mouseX-100, mouseY-100);
+			// ellipse(this.pos.x, this.pos.y,3);
+			point(this.pos.x, this.pos.y);
+      if(mouseX - this.pos.x < 100){
+        this.pos.x = mouseX-100;
+      }
+      if (mouseY - this.pos.y < 100){
+        this.pos.y = mouseY-100;
+      }
+    }
+
+
+    Vehicle.prototype.arrive = function(target){
+      var desired = p5.Vector.sub(target,this.pos);
+      var d = desired.mag();
+      var speed = this.maxspeed;
+      if(d<60){
+         speed = map(d, 0, 100, 0 , this.maxspeed);
+      }
+      desired.setMag(speed);
+      var steer = p5.Vector.sub(desired,this.vel);
+      steer.limit(this.maxforce)
+      return steer;
+    }
+
+
+    Vehicle.prototype.flee = function(target){
+      var desired = p5.Vector.sub(target,this.pos);
+      var d = desired.mag();
+      if (d < 60){
+          desired.setMag(this.maxspeed);
+          desired.mult(random(-9,22));
+          var steer = p5.Vector.sub(desired,this.vel);
+          steer.limit(this.maxforce);
+          return steer;
+      }else{
+        return createVector(0,0);
+      }
+    }
+
+
+
+
+	</script>
+
+
+	<style>
+		body {
+			background-color: black;
+			margin:0;
+			padding:0;
+			height: auto;
+			overflow-y: scroll;
+			cursor: crosshair;
+		}
+		canvas {
+			margin:auto;
+			height:auto;
+			overflow-y: scroll;
+		}
+
+	.testo{
+	font-size:30px;
+	color:white;
+	letter-spacing: 10px;
+	line-height: 10px;
+position:relative;
+		}
+
+
+		.testo2{
+		font-size:0px;
+		color:white;
+		letter-spacing: 10px;
+		line-height: 10px;
+margin-left:20px;	}
+
+
+	</style>
+
+</head>
+<body>
+
+</body>
+</html>

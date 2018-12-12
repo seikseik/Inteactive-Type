@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+	<script src="libraries/p5.sound.js"></script>
+	<script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+
+	<script>
+
+	var video;
+	var vScale = 35;
+	let font;
+
+	function preload() {
+	  font = loadFont('font/NHaasGroteskDSPro-35XLt.ttf');
+	}
+
+	function setup(){
+	  createCanvas(windowWidth,windowHeight);
+	  pixelDensity(1);
+	  video = createCapture(VIDEO);
+	  video.hide();
+	  video.size(width/vScale,height/vScale);
+	  textFont(font);
+	}
+
+	function draw(){
+	  translate(20,30);
+	  background(0);
+	  translate(10,10)
+	  video.loadPixels();
+	  loadPixels();
+	  for(var y=0; y < video.height; y++){
+	    for(var x = 0; x < video.width; x++){
+
+	      var index = (video.width - x +1 + y * video.width)*4;
+	      var r = video.pixels[index+0];
+	      var g = video.pixels[index+1];
+	      var b = video.pixels[index+2];
+	      var bright = (r+g+b)/3;
+
+	      var w = map(bright, 0,255, 0,vScale);
+
+	      noStroke();
+
+	let valore = map(w, 0, 35, 0, 9);
+	let intValore = Math.floor(valore);
+
+	      fill(255);
+	      textAlign(CENTER);
+
+
+				if(Number.isNaN(intValore)){
+					intValore = 0;
+
+				}else{
+					text(intValore,x*vScale,y*vScale);
+		      textSize(w);
+				}
+
+	  }
+	}
+}
+
+	</script>
+
+
+	<style>
+		body {
+			background-color: black;
+			margin:0;
+			padding:0;
+			height: auto;
+			overflow-y: scroll;
+			cursor: crosshair;
+		}
+		canvas {
+			margin:auto;
+			height:auto;
+			overflow-y: scroll;
+		}
+
+	.testo{
+	font-size:30px;
+	color:white;
+	letter-spacing: 10px;
+	line-height: 10px;
+position:relative;
+		}
+
+
+		.testo2{
+		font-size:0px;
+		color:white;
+		letter-spacing: 10px;
+		line-height: 10px;
+margin-left:20px;	}
+
+
+	</style>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+        	<meta charset="UTF-8">
+        	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        	<title>Interactive-posters</title>
+
+        	<script src="libraries/p5.js"></script>
+        	<script src="libraries/p5.dom.js"></script>
+        	<script src="libraries/p5.sound.js"></script>
+
+        	<script>
+
+
+
+            var xspacing = 30;
+            var w;
+            var theta = 0.0;
+            var dx;
+            var yvalues;
+
+
+
+
+            function preload() {
+              fontS = loadFont('font/NHaasGroteskDSPro-25Th.ttf');
+              fontM = loadFont('font/NHaasGroteskDSPro-45Lt.ttf');
+              fontH = loadFont('font/NHaasGroteskDSPro-55Rg.ttf');
+            }
+
+
+
+            const arr = [];
+let plus = 1800;
+            function setup() {
+
+              createCanvas(windowWidth, windowHeight+2000);
+              w = windowHeight*5;
+              dx = (TWO_PI / period) * xspacing;
+              yvalues = new Array(floor(w/xspacing));
+              textFont(fontM);
+              textSize(25);
+            }
+
+
+            function draw() {
+              translate(width/2,-height+1800)
+              background(0);
+              calcWave();
+              renderWave();
+            }
+
+						var period = 500.0;
+
+            function calcWave() {
+
+							var amp = map(mouseX, 0,windowWidth,30,500);
+							var amplitude = amp;
+							var th = map(mouseY,0,windowHeight,0.03,0.09);
+
+              theta += th;
+              var x = theta;
+              for (var i = 0; i < yvalues.length; i++) {
+                yvalues[i] = sin(x)*amplitude;
+                x+=dx;
+              }
+            }
+
+
+            function renderWave() {
+              noStroke();
+              fill(255);
+              for (var x = 0; x < 200; x++) {
+                text(char(x),yvalues[x],x*xspacing);
+              }
+            }
+
+
+
+        	</script>
+
+
+        	<style>
+        		body {
+        			background-color: black;
+        			margin:0;
+        			padding:0;
+        			height: auto;
+        			overflow-y: scroll;
+        			cursor: crosshair;
+        		}
+        		canvas {
+        			margin:auto;
+        			height:auto;
+        			overflow-y: scroll;
+        		}
+
+        	</style>
+
+        </head>
+        <body>
+
+        </body>
+        </html>

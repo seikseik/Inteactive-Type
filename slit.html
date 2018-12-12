@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+
+	<script>
+
+
+    var x = 0;
+
+    var pg;
+    var fontB;
+
+    function preload() {
+      fontB = loadFont('font/NHaasGroteskDSPro-65Md.ttf');
+    }
+
+
+
+
+    function setup() {
+
+      createCanvas(windowWidth, windowHeight);
+      pixelDensity(1);
+      textAlign(CENTER);
+
+    }
+
+    let words = ["AAAAA","BBBBB","CCCCC","DDDDD","EEEEE","FFFFF","GGGGG","HHHHH","IIIII","JJJJJ","KKKKK","LLLLL","MMMMM","NNNNN","OOOOO","PPPPP","QQQQQ","RRRRR","SSSSS","TTTTT","UUUUU","VVVVV","ZZZZZ"];
+    let count = 0;
+    function draw() {
+			pg = createGraphics(windowWidth, 600);
+
+
+        var w = pg.width;
+        var h = pg.height;
+
+      pg.loadPixels();
+
+      pg.background(0);
+      // pg.noStroke();
+      pg.textSize(300);
+      pg.fill(255);
+      pg.textFont(fontB);
+      pg.text(words[count], mouseX, mouseY);
+      pg.strokeWeight(1);
+      pg.line(x+3,0,x+3,h);
+
+      copy(pg, x, 0, 10, h, x, 0, 10, h);
+
+        x = x+4;
+        if(x > width){
+          x = 0;
+          count++;
+        }
+        if(count >= words.length){
+          count = 0;
+        }
+
+    }
+
+
+
+	</script>
+
+
+	<style>
+		body {
+			background-color: black;
+			margin:0;
+			padding:0;
+			height: auto;
+			overflow-y: scroll;
+			cursor: crosshair;
+		}
+		canvas {
+			margin:auto;
+			height:auto;
+			overflow-y: scroll;
+		}
+
+	.testo{
+	font-size:30px;
+	color:white;
+	letter-spacing: 10px;
+	line-height: 10px;
+position:relative;
+		}
+
+
+		.testo2{
+		font-size:0px;
+		color:white;
+		letter-spacing: 10px;
+		line-height: 10px;
+margin-left:20px;	}
+
+
+	</style>
+
+</head>
+<body>
+
+</body>
+</html>

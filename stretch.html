@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+	<script src="libraries/p5.sound.js"></script>
+	<style>
+		body {
+			background-color: black;
+			margin:0;
+			padding:0;
+			height: auto;
+			overflow-y: scroll;
+			cursor: crosshair;
+		}
+		canvas {
+			margin:auto;
+			height:auto;
+			overflow-y: scroll;
+		}
+
+	.testo{
+	font-size:30px;
+	color:white;
+	letter-spacing: 10px;
+	line-height: 10px;
+position:relative;
+		}
+
+		.testo2{
+		font-size:0px;
+		color:white;
+		letter-spacing: 10px;
+		line-height: 10px;
+margin-left:20px;	}
+
+
+.col-1{
+	float: left;
+	width:70%;
+	height: auto;
+	/* background-color: purple; */
+
+}
+
+.col-2{
+	float: right;
+	/* padding: 5px; */
+	width:30%;
+	height: auto;
+	/* background-color: blue; */
+}
+
+.col-3{
+	float: left;
+	width:100%;
+	height: auto;
+/* background-color: red; */
+}
+
+img {
+    max-width: 100%;
+    min-height: 500px;
+}
+
+	</style>
+
+</head>
+<body>
+<!-- <div id = "col-1"> <img src = "asset/bold.png"></div>
+<div id = "col-2"><img src = "asset/light.png"></div>
+<div id = "col-2"><img src = "asset/light.png"></div>
+<div id = "col-3"><img src = "asset/regular.png"></div> -->
+</body>
+
+<script>
+
+let canvas;
+let div1;
+let div2;
+let div3;
+let a;
+let b;
+let c;
+var diameter;
+var angle = 0;
+var angle2 = 0;
+
+
+function setup() {
+  canvas = createCanvas(windowWidth, windowHeight);
+  canvas.position(0,0);
+  canvas.style("z-index", "-1");
+
+  diameter = 100;
+  background(0);
+
+   a = createImg('asset/bold.png');
+   b =createImg('asset/light.png');
+   // c =createImg('asset/regular.png');
+
+   div1 = createDiv("");
+   div1.addClass('col-1');
+   div2 = createDiv('');
+   div2.addClass('col-2');
+   // div3 = createDiv('');
+   // div3.addClass('col-3');
+
+
+div1.child(a);
+div2.child(b);
+// div3.child(c);
+}
+
+
+function draw(){
+
+  var d1 = 50 + (sin(angle) * diameter/2);
+  var d2 = 50 + (sin(-angle) * diameter/2);
+  // var d3 = 50 + (cos(angle) * diameter/2);
+
+	// let valore = map(d1, 0, windowWidth, 0,100);
+  // let valore2 = map(d3, 0, 100, 300,1000);
+  let valore3 = map(d1, 0, windowHeight, 200,800);
+
+  div1.style("width", d1 +"%");
+  div2.style("width", d2 +"%");
+  // a.style("min-height", valore3 +"px");
+  // b.style("min-height", valore3 +"px");
+  // c.style("height", valore2+"px");
+
+  angle += 0.02;
+  // angle2 += 0.05;
+
+
+}
+
+
+
+</script>
+</html>
