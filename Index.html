@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Interactive-posters</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+
+	<style>
+
+    @font-face {
+      font-family: "font/NHaasGroteskDSPro-35XLt.ttf";
+      src: url("/font/font/NHaasGroteskDSPro-35XLt.ttf") format("ttf"),
+         url("/font/font/NHaasGroteskDSPro-35XLt.ttf") format("ttf"); }
+
+       @font-face {
+           font-family: "font/NHaasGroteskDSPro-45LtIt.ttf";
+           src: url("/font/font/NHaasGroteskDSPro-45LtIt.ttf") format("ttf"),
+              url("/font/font/NHaasGroteskDSPro-45LtIt.ttf") format("ttf"); }
+
+html{
+  width:100%;
+}
+
+		body {
+			background-color: black;
+      /* width:100%; */
+			margin:0;
+			padding:0;
+			height: auto;
+		}
+
+		canvas {
+			margin:auto;
+			height:auto;
+			overflow-y: scroll;
+		}
+
+a{
+  font-family: "NHaasGroteskDSPro-45Lt", sans-serif;
+  font-size: 30px;
+  line-height: 32px;
+  color: white;
+  text-decoration:none;
+}
+
+
+a:hover{
+  font-family: "NHaasGroteskDSPro-45Lt", sans-serif;
+  font-style: italic;
+  /* letter-spacing: 20px; */
+  transition: .7s;
+
+}
+
+p{
+  font-family: "NHaasGroteskDSPro-45Lt", sans-serif;
+  font-size: 30px;
+  line-height: 32px;
+  color: white;
+}
+
+.col-dx{
+  width:45%;
+  padding-right:90px;
+  float:right;
+}
+.col-sx{
+  width:45%;
+  float:left;
+}
+
+
+.sidenav {
+    height: auto;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+	  /* background:black; */
+    overflow-x: hidden;
+	  overflow-y: hidden;
+    padding-top: 35px;
+    transition: 0.6s;
+}
+
+.sidenav a {
+	font-size:20px;
+	color: white;
+	text-decoration: underline;
+  display: block;
+  transition: 0.6s;
+
+	}
+
+.sidenav p{
+  font-size: 20px;
+  width:450px;
+	color:white;
+	padding:20px;
+	position:fixed;
+	transition: 0.6s;
+}
+
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }
+
+}
+
+	</style>
+
+</head>
+<body>
+
+
+<div class = "col-sx">
+  <ul>
+  <li><p>EXPERIMENTS</p></li>
+
+  <li><a href = "alphabet.html">ALPHABET</a></li>
+  <li><a href = "blend.html">BLEND</a></li>
+  <li><a href = "LetterLoop.html">LOOP</a></li>
+  <li><a href = "light.html">LIGHT</a></li>
+  <li><a href = "opacity.html">LERP</a></li>
+  <li><a href = "sine.html">SINEWAVE</a></li>
+<li>  <a href = "clock.html">CLOCK</a></li>
+  <li><a href = "slit.html">SLITSCAN</a></li>
+  <li><a href = "steer.html">STEER</a></li>
+  <li><a href = "stretch.html">STRETCH</a></li>
+  <li><a href = "void.html">SPIN</a></li>
+  <li><a href = "webcam.html">WEBCAM</a></li>
+
+</div>
+
+<div class="col-dx">
+  <p style="float:right"><a href="#" onclick="openNav()">INFO</a></p>
+</div>
+
+
+<div id="mySidenav"  class="sidenav closebtn curs" onclick="closeNav()">
+
+ <p class="info">
+   Ongoing project about interactive typography.<br> All experiments are made using p5.js library.<br>
+   Feel free to use them in your projects if you want.<br> Code repo:
+    <a href="https://github.com/seikseik/Inteactive-Type">Github<a>
+     <a href ="https://www.matteosacchi.com/">www.matteosacchi.com</a>
+     </p>
+</div>
+
+
+
+
+<script>
+
+  /* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "550px";
+	document.getElementById("mySidenav").style.height = "500px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+</script>
+</body>
+</html>
