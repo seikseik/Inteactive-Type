@@ -13,4 +13,4 @@ Some examples:
 <img src="/asset/pic/spacing.png"></img>
 <img src="/asset/pic/void.png"></img>
 <img src="/asset/pic/web.png"></img>
-<img src="/asset/pic/wander.png"></img>
+<img src="/asset/pic/wander.jpg"></img>
