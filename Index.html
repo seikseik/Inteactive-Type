@@ -82,7 +82,7 @@ p{
     z-index: 1000;
     top: 0;
     right: 0;
-	  /* background:black; */
+	  background:black;
     overflow-x: hidden;
 	  overflow-y: hidden;
     padding-top: 35px;
@@ -99,17 +99,36 @@ p{
 	}
 
 .sidenav p{
-  font-size: 20px;
+  font-size: 18px;
   width:450px;
 	color:white;
-	padding:20px;
+	padding-right:20px;
 	position:fixed;
 	transition: 0.6s;
 }
 
-    @media screen and (max-height: 450px) {
+.infoA{
+	font-size:30px;
+	float:right;
+}
+
+    @media screen and (max-width: 450px) {
         .sidenav {padding-top: 15px;}
         .sidenav a {font-size: 18px;}
+				.infoA{font-size: 22px;}
+				.col-dx{
+				  padding-right:30px;
+				  float:right;
+				}
+				.sidenav p{
+				  font-size: 20px;
+				  width:280px;
+					padding-left:140px;
+
+				}
+				ul{
+					padding-left:20px;
+				}
     }
 
 }
@@ -130,7 +149,7 @@ p{
   <li><a href = "light.html">LIGHT</a></li>
   <li><a href = "opacity.html">LERP</a></li>
   <li><a href = "sine.html">SINEWAVE</a></li>
-<li>  <a href = "clock.html">CLOCK</a></li>
+	<li><a href = "clock.html">CLOCK</a></li>
   <li><a href = "slit.html">SLITSCAN</a></li>
   <li><a href = "steer.html">STEER</a></li>
   <li><a href = "stretch.html">STRETCH</a></li>
@@ -140,7 +159,7 @@ p{
 </div>
 
 <div class="col-dx">
-  <p style="float:right"><a href="#" onclick="openNav()">INFO</a></p>
+  <p><a  class="infoA" href="#" onclick="openNav()">INFO</a></p>
 </div>
 
 
@@ -161,7 +180,7 @@ p{
 
   /* Set the width of the side navigation to 250px */
 function openNav() {
-    document.getElementById("mySidenav").style.width = "550px";
+    document.getElementById("mySidenav").style.width = "450px";
 	document.getElementById("mySidenav").style.height = "500px";
 }
 

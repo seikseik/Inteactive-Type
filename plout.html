@@ -14,8 +14,6 @@
 
 	<script>
 
-
-
     let canvas;
     let parag;
 
@@ -25,26 +23,23 @@
       fontH = loadFont('font/NHaasGroteskDSPro-55Rg.ttf');
     }
 
-
-
     let arr = [];
 
     function setup() {
-      canvas = createCanvas(windowWidth*2, windowHeight*5);
+      canvas = createCanvas(windowWidth, windowHeight*5);
       textFont(fontS);
       background(0);
       canvas.style("z-index", "-1");
       canvas.position(10,10);
 
-      for( let i = 0; i < 50; i++){
+      for( let i = 5; i < 50 ; i++){
 
-        parag = createP("arte e scienza")
+        parag = createP("ARTE E SCIENZA")
         parag.addClass("testo2");
         parag.style("letter-spacing", +i+"px");
         parag.style("font-size", +i+"px")
         arr.push(parag);
       }
-      // console.log(arr);
     }
 
 
@@ -58,42 +53,37 @@
 
 
     for( let j = 0; j < arr.length; j++){
-			// let jj = j+spac;
-			let jj = spac + sin(j);
+			// let jj = spac + sin(j);
+			let jj = spac;
       arr[j].style("letter-spacing", +jj+"px");
     }
 
-
-
-
-
-
     }
-
-
-
 
 	</script>
 
 
 	<style>
 
-	@@font-face {
-	}
+	@font-face {
+  font-family: 'NHaasGroteskDSPro-25Th';
+  src: url(font/NHaasGroteskDSPro-25Th.ttf);
+}
 
-	
+
 		body {
 			background-color: black;
 			margin:0;
 			padding:0;
 			height: auto;
-			overflow-y: scroll;
+			overflow: scroll;
 			cursor: crosshair;
 		}
 		canvas {
 			margin:auto;
 			height:auto;
 			overflow-y: scroll;
+
 		}
 
 	.testo{
@@ -106,11 +96,12 @@ position:relative;
 
 
 		.testo2{
-		font-size:0px;
+		font-family: "NHaasGroteskDSPro-25Th";
+		font-size:20px;
 		color:white;
-		letter-spacing: 10px;
+		letter-spacing: 20px;
 		line-height: 10px;
-margin-left:20px;	}
+		margin-left:20px;	}
 
 
 	</style>

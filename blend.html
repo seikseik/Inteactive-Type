@@ -8,57 +8,45 @@
 	<title>Interactive-posters</title>
 
 	<script src="libraries/p5.js"></script>
-	<script src="libraries/p5.dom.js"></script>
-	<script src="libraries/p5.sound.js"></script>
-	<script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+
 
 	<script>
 
-
-
-
     var font,
-      fontsize = 60
+      fontsize = 290
       var max_distance;
 
-      var testo = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+      var testo = "exclusion";
 
-      let arr = testo.toUpperCase().split("");
-      console.log(arr);
+    let arr = testo.toUpperCase().split("");
 
     function preload() {
       font = loadFont('font/NHaasGroteskDSPro-75Bd.ttf');
     }
 
     function setup() {
-      createCanvas(windowWidth, windowHeight);
+      createCanvas(windowWidth-50, windowHeight);
       blendMode(EXCLUSION);
       textFont(font);
       textSize(fontsize);
-      // textAlign(CENTER, CENTER);
-
+			textAlign(CENTER);
+			ellipse(300,250,180);
+			ellipse(900,450,200);
     }
 
     function draw() {
       background(0);
-
-      var gap = 60;
-      var margin = 10;
-      translate(margin * 2, margin * 2);
-
+      var gap = 93;
+			translate(width/2-width/4, height/2);
       var i = 0;
-
-      for (y = 0; y < height - gap; y += gap) {
-        for (x = 0; x < width - gap; x += 20) {
-
-          var letter = arr[i];
-
-        fill(255);
-        text(letter, x, y);
-
+      for (y = 50; y < height - gap; y += gap) {
+        for (x = 0; x < width - gap; x += gap) {
+	        var letter = arr[i];
+	        fill(255);
+					stroke(0);
+	        text(letter, x, y);
           i++;
         }
-
       }
     }
 
@@ -67,7 +55,6 @@
 
 
 	</script>
-
 
 	<style>
 		body {
@@ -83,23 +70,6 @@
 			height:auto;
 			overflow-y: scroll;
 		}
-
-	.testo{
-	font-size:30px;
-	color:white;
-	letter-spacing: 10px;
-	line-height: 10px;
-position:relative;
-		}
-
-
-		.testo2{
-		font-size:0px;
-		color:white;
-		letter-spacing: 10px;
-		line-height: 10px;
-margin-left:20px;	}
-
 
 	</style>
 
