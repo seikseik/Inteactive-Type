@@ -1,0 +1,96 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+        	<meta charset="UTF-8">
+        	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        	<title>Interactive-posters</title>
+
+        	<script src="libraries/p5.js"></script>
+        	<script src="libraries/p5.dom.js"></script>
+
+        	<script>
+
+
+            var fontS;
+
+            function preload() {
+              fontS = loadFont('font/NHaasGroteskDSPro-25Th.ttf');
+              fontM = loadFont('font/NHaasGroteskDSPro-45Lt.ttf');
+              fontH = loadFont('font/NHaasGroteskDSPro-55Rg.ttf');
+            }
+
+            var pg;
+
+
+            function setup(){
+              createCanvas(windowWidth,windowHeight);
+
+              pg = createGraphics(windowWidth,150);
+              pg.textAlign(CENTER,CENTER);
+              pg.textFont(fontS);
+              imageMode(CENTER);
+
+            }
+
+
+            function draw (){
+
+              background(0);
+
+              pg.background(0);
+
+              pg.noFill(255);
+              pg.stroke(250);
+              pg.textSize(150);
+              pg.text('REPLACE',width/4,0);
+              push();
+
+              for (let y = 1; y <80; y++){
+
+              let a = map(mouseX, 0, width, 0, 100);
+              let b = map(mouseY, 0, height, 0, 100);
+              let c = map(mouseX, -10, 10, 0, 100);
+              let d = map(mouseY, 0, 10, 0, 100);
+
+                let dispy = map(sin(radians(frameCount+(y*11))),1,-1,a,b);
+                let dispx = map(sin(radians(y*frameCount*0.1)),-1,1,c,d);
+
+              image(pg,  width/2, 10*y, pg.width, dispy, 0, dispy, pg.width, dispy);
+            }
+
+            pop();
+
+            }
+
+
+
+
+
+        	</script>
+
+
+        	<style>
+        		body {
+        			background-color: black;
+        			margin:0;
+        			padding:0;
+        			height: auto;
+        			overflow-y: scroll;
+        			cursor: crosshair;
+        		}
+        		canvas {
+        			margin:auto;
+        			height:auto;
+        			overflow-y: scroll;
+        		}
+
+        	</style>
+
+        </head>
+        <body>
+
+        </body>
+        </html>
